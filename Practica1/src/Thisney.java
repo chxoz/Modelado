@@ -1,24 +1,21 @@
-import java.util.LinkedList; 
+import java.util.LinkedList;
 import java.util.Random;
 /**
- * Clase concreta que implementa la interfaz Servicio(Observable) y es la clase del servicio Memeflix
+ * Clase concreta que implementa la interfaz Servicio(Observable) y es la clase del servicio Thisney+
  * @author Daniela Anaya Solis, Mauricio López Miranda
  * @version 1.0, Oct/2021/
  */
-public class Memeflix implements Servicio{
-    
+public class Thisney implements Servicio {
     public LinkedList<Usuario> usuarios;
     public LinkedList<Usuario> historial;
-    public LinkedList<String> recomendaciones; 
-    
+    public LinkedList<String> recomendaciones;
     /**
-     * Constructor que no recibe nada, pero inicializa los parámetros
+     * Constructor de la clase Thisney que no recibe nada, pero inicializa los parámetros
      */
-    public Memeflix(){
+    public Thisney(){
         this.usuarios = new LinkedList<Usuario>();
         this.historial = new LinkedList<Usuario>();
         this.recomendaciones = new LinkedList<String>();
-        //this.planes = new LinkedList<String>();
     }
     /**
      * Sobreescritura del método agregarUsuario de la interfaz Servicio(Observable)
@@ -32,20 +29,22 @@ public class Memeflix implements Servicio{
         if(hisUsuarios.size()==0){
             usuarios.add(agrePersona);
             historial.add(agrePersona);
-            System.out.println("Gracias por confiarnos tu tiempo de ocio, ¡Bienvenido a Memeflix "+agrePersona.getNombre()+"!\n");
+            System.out.println("¡Bienvenido a Thisney+ "+agrePersona.getNombre()+"!"+" \n Esperamos que nuestro contenido sea de tu agrado\n");
         }else{
         for(i=0; i<cantidadUsuarios-1; i++){
             if(hisUsuarios.get(i)==agrePersona){
                 usuarios.add(agrePersona);
                 historial.add(agrePersona);
-                System.out.println("Bienvenido devuelta a Memeflix!"+agrePersona.getNombre()+", te echamos de menos UnU \n");
+                System.out.println("Bienvenido devuelta a Thisney+!"+agrePersona.getNombre()+", sabiamos que volverías UuU\n");
             }
         }
         usuarios.add(agrePersona);
         historial.add(agrePersona);
-        System.out.println("Gracias por confiarnos tu tiempo de ocio, ¡Bienvenido a Memeflix "+agrePersona.getNombre()+"!\n");
+        System.out.println("¡Bienvenido a Thisney+ "+agrePersona.getNombre()+"!"+" \n Esperamos que nuestro contenido sea de tu agrado\n");
         }
+
     }
+
     /**
      * Sobreescritura del método removerUsuario de la interfaz Servicio(Observable)
      * @param remPersona usuario que se eliminara de la lista usuarios
@@ -57,22 +56,22 @@ public class Memeflix implements Servicio{
 
     /**
     * Sobreescritura del método llenarListaRecomendaciones de la interfaz Servicio(Observable)
-    * que llena una lista con recomendaciones de peliculas y series del servicio Memeflix
+    * que llena una lista con recomendaciones de peliculas y series del servicio Thisney+
     */
     @Override
     public void llenarListaRecomendaciones(){
-        String enero = "The Hundred";
-        String febrero="Friends";
-        String marzo= "Britney vs Spears";
-        String abril= "Supergirl";
-        String mayo = "Fórmula 1 Drive to survive";
-        String junio = "El club de la pelea" ;
-        String julio = "Grey's Anatomy";
-        String agosto= "Bob Esponja";
-        String septiembre= "Queens Gambit";
-        String octubre= "Flash";
-        String noviembre= "Atypical"; 
-        String diciembre = "Squid Game"; 
+        String enero = "Bugs Bunny";
+        String febrero = "WandaVision";
+        String marzo = "High school musical";
+        String abril = "El maravilloso mundo de Mickey";
+        String mayo = "The Mandalorian";
+        String junio =  "Forky";
+        String julio = "Diario de una futura presidenta";
+        String agosto = "Llamando a Ned";
+        String septiembre = "Sobrevolando";
+        String octubre = "Proyecto héroes de Marvel";
+        String noviembre = "¡Otra!";
+        String diciembre = "Nemo";
         recomendaciones.add(enero);
         recomendaciones.add(febrero);
         recomendaciones.add(marzo);
@@ -86,17 +85,17 @@ public class Memeflix implements Servicio{
         recomendaciones.add(noviembre);
         recomendaciones.add(diciembre);
     }
+
     /**
      * Sobreescritura del método getRecomendaciones de la interfaz Servicio(Observable)
      * que sirve como auxiliar en el método cobrar de las clases que implementan la interfaz Planes
      * para poder hacer recomendaciones
      * @return lista con las recomendaciones de cada clase
-     */    
+     */
     @Override
     public LinkedList<String> getRecomendaciones() {
         return recomendaciones;
     }
-
 
     /**
      * Sobreescritura del método recomendar de la interfaz Servicio(Observable)
@@ -109,4 +108,5 @@ public class Memeflix implements Servicio{
         int iAleatoria = rec.nextInt(recomendaciones.size());
         return iAleatoria;
     }
+
 }

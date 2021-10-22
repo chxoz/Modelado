@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 /**
+ * interfaz servicio es el observable (sujeto) del patron Observer
  * Servicio va a tener los métodos de una aplicación de streaming, que serán
  * implementados en clases en clases concretas
  * @authors Daniela Anaya Solis, Mauricio López Miranda  
@@ -21,12 +22,18 @@ public interface Servicio {
      */
     public void removerUsuario(Usuario remPersona);
     /**
-     * asignarPlan método que se sobreercribirá en cada clase de las apps de streaming
-     * para asignar los planes de los usuarios
-     * @param plan plan de algún servicio de streaming
-     * @param usuarioDeCadaServicio usuario que contrato el servicio
+     * Método que obtiene la lista de recomendaciones de cada apliación de streaming
+     * @return lista de recomendaciones
      */
-    public void asignarPlan(String plan, Usuario usuarioDeCadaServicio);
-    public void llenarListaPlanes();
-    public void CancelarSuscripcion(Usuario u);
+    public LinkedList<String> getRecomendaciones();
+    
+    /**
+     * Método para automatizar el llenado de las recomendaciones de los servicios
+     */
+    public void llenarListaRecomendaciones();
+    /**
+     * Método para poder usar el método .get(index) de LinkedList con un indice aleatorio
+     * @return int i que es un indice aleatorio
+     */
+    public int recomendar();
 }
